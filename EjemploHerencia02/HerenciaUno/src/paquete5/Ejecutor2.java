@@ -5,6 +5,7 @@
  */
 package paquete5;
 
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -16,6 +17,11 @@ public class Ejecutor2 {
     public static void main(String[] args) {
         // 1. Crear y presentar un obj de tipo Estudiante Presencial,
         // con datos por teclado
+        ArrayList<EstudiantePresencial> arreglo;
+        arreglo = new ArrayList();
+        boolean bandera= true;
+        
+        while(bandera){
         Scanner entrada = new Scanner(System.in);
         entrada.useLocale(Locale.US);
         System.out.println("Ingrese nombre");
@@ -29,12 +35,24 @@ public class Ejecutor2 {
         System.out.println("Ingrese número de créditos");
         int creditos = entrada.nextInt();
         System.out.println("Ingrese costo de créditos");
-        double costo = entrada.nextInt();
+        double costo = entrada.nextDouble();
         
         EstudiantePresencial presencial = new EstudiantePresencial(n, ap, ced, 
                 edad, creditos, costo);
         presencial.calcularMatriculaPresencial();
+        arreglo.add(presencial);
         
-        System.out.printf("%s\n", presencial);
+       
+            System.out.println("Ingrese 1 para terminar el proceso");
+        int opcion= entrada.nextInt();
+            if (opcion==1) {
+                bandera = false;
+                
+            }
+    }
+        for (int i = 0; i < arreglo.size(); i++) {
+            System.out.printf("%s\n", arreglo.get(i));
+            
+        }
     }
 }
